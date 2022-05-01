@@ -28,6 +28,8 @@ public class RestController {
     public List<Map<String, Object>> search(@PathVariable("keywords") String keywords,
                                             @PathVariable("pageNo") int pageNo,
                                             @PathVariable("pageSize") int pageSize) throws IOException {
-        return contentService.searchPage(keywords, pageNo, pageSize);
+        return contentService.searchHighLightPage(keywords, pageNo, pageSize);
     }
+
+
 }

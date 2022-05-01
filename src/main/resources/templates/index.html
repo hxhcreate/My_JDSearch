@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
-    <title>狂神说Java-ES仿京东实战</title>
+    <title>MyJDSearch</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
-    <script th:src="@{/js/jquery.min.js}"></script>
+
 </head>
 <body class="pg">
 <div class="page">
@@ -35,11 +35,11 @@
                                 </fieldset>
                             </form>
                             <ul class="relKeyTop">
-                                <li><a>狂神说Java</a></li>
-                                <li><a>狂神说前端</a></li>
-                                <li><a>狂神说Linux</a></li>
-                                <li><a>狂神说大数据</a></li>
-                                <li><a>狂神聊理财</a></li>
+                                <li><a>数码</a></li>
+                                <li><a>美妆</a></li>
+                                <li><a>鞋服</a></li>
+                                <li><a>户外</a></li>
+                                <li><a>国际</a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="attrValues">
                                     <ul class="av-collapse row-2">
-                                        <li><a href="#"> 狂神说 </a></li>
+                                        <li><a href="#"> HXH </a></li>
                                         <li><a href="#"> Java </a></li>
                                     </ul>
                                 </div>
@@ -87,15 +87,15 @@
                             </div>
                             &lt;!&ndash;价格&ndash;&gt;
                             <p class="productPrice">
-                                <em v-text="result.price"></em>
+                                <em>{{result.price}}</em>
                             </p>
                             &lt;!&ndash;标题&ndash;&gt;
                             <p class="productTitle">
-                                <a v-html="result.name"></a>
+                                <span v-html="result.title"></span>
                             </p>
                             &lt;!&ndash; 店铺名 &ndash;&gt;
                             <div class="productShop">
-                                <span v-text="result.shopnum"></span>
+                                <span >{{result.shopnum}}</span>
                             </div>
                             &lt;!&ndash; 成交信息 &ndash;&gt;
                             <p class="productStatus">
@@ -109,8 +109,8 @@
         </div>
     </div>
 </div>
-<script src="../static/js/axios.min.js"></script>
-<script src="../static/js/vue.min.js"></script>
+<script th:src="@{/js/axios.min.js}"></script>
+<script th:src="@{/js/vue.min.js}"></script>
 <script>
     new Vue({
         el: "#app",
@@ -120,9 +120,9 @@
         },
         methods: {
             searchKey() {
-                var keyword = this.keyword;
+                const keyword = this.keyword;
                 console.log(keyword);
-                axios.get('searchHighLight/' + keyword + '/0/20').then(response => {
+                axios.get('search/' + keyword + '/0/20').then(response => {
                     console.log(response);
                     this.results = response.data;
                 })
